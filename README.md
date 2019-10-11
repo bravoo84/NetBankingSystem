@@ -11,6 +11,13 @@ The Spring Framework provides a comprehensive programming and configuration mode
 
 **Implementation**: [This](https://docs.google.com/document/d/1N2HoZpFJjwLFG1GDQKb-hVswMM-KdguSPz5yKVRMY0E/edit?usp=sharing) is an in-progress document like an SRS but has no particular structure defined as of now. This will change in later revisions. 
 
+**Collaborate** (Authorization needed)
+1. Open Eclipse-J2EE
+2. Select File -> Import
+3. Select Project from github 
+4. Add our project link in URI and fill up your github details.
+
+
 ## Creators
 [Monil Soni](https://github.com/monilSoni)  
 [Bhavik Mehta](https://github.com/bravoo84)
