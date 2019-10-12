@@ -36,5 +36,60 @@ public class Transaction {
 	@Column(name = "date")
 	private Date date;
 	
+	public Transaction() {
+		
+	}
+
+	public String getAccountNo() {
+		return accountNo;
+	}
+
+	public void setAccountNo(String accountNo) {
+		this.accountNo = accountNo;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
+
+	public String getCrDb() {
+		return CrDb;
+	}
+
+	public void setCrDb(String crDb) {
+		CrDb = crDb;
+	}
+
+	public long getAmount() {
+		return amount;
+	}
+
+	public void setAmount(long amount) {
+		this.amount = amount;
+	}
+
+	public long getClosingBalance() {
+		return closingBalance;
+	}
+
+	public void setClosingBalance(long closingBalance) {
+		this.closingBalance = closingBalance;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	
+	
+	
 
 }
