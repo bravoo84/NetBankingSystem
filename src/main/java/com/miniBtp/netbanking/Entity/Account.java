@@ -34,7 +34,7 @@ public class Account {
 	private String currency;
 	
 	@Column(name = "user_id")
-	private int userId;
+	private long userId;
 
 	public String getAccountNo() {
 		return accountNo;
@@ -86,7 +86,7 @@ public class Account {
 	
 	
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
