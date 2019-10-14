@@ -13,7 +13,7 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
  
-	<context:component-scan base-package="com.miniBtp.netbanking.Controller" />
+	<context:component-scan base-package="com.miniBtp.netbanking" />
 	
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven/>
@@ -53,6 +53,7 @@
 		<property name="dataSource" ref="myDataSource" />
 		<property name="packagesToScan" value="com.miniBtp.netbanking.Entity" />
 		<property name="hibernateProperties">
+		
 		   <props>
 		      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 		      <prop key="hibernate.show_sql">true</prop>
