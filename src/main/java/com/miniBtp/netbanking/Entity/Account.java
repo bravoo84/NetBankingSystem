@@ -32,6 +32,9 @@ public class Account {
 	
 	@Column(name = "currency")
 	private String currency;
+	
+	@Column(name = "user_id")
+	private int userId;
 
 	public String getAccountNo() {
 		return accountNo;
@@ -80,11 +83,21 @@ public class Account {
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
+	
+	
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 	@Override
 	public String toString() {
 		return "Account [accountNo=" + accountNo + ", openDate=" + openDate + ", IFSC=" + IFSC + ", type=" + type
-				+ ", balance=" + balance + ", currency=" + currency + "]";
+				+ ", balance=" + balance + ", currency=" + currency + ", userId=" + userId + "]";
 	}
 	
 	
