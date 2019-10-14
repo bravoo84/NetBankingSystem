@@ -14,7 +14,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
-	private int userId;
+	private long userId;
 	
 	@Column(name = "user_name")
 	private String userName;
@@ -27,6 +27,9 @@ public class User {
 	
 	@Column(name = "address")
 	private String address;
+	
+	@Column(name = "password")
+	private String password;
 	
 	public User() {
 		
@@ -64,11 +67,23 @@ public class User {
 		this.address = address;
 	}
 
+	
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", email=" + email + ", mobileNo=" + mobileNo
-				+ ", address=" + address + "]";
+				+ ", address=" + address + ", password=" + password + "]";
 	}
+
+	
 
 	
 	
