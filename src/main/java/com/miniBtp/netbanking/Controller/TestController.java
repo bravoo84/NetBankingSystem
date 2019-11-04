@@ -8,6 +8,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,12 +23,10 @@ import com.miniBtp.netbanking.Entity.User;
 public class TestController {
 
 	@Autowired
-	private UserAccountDetails details;
+	private UserAccountDetails accountDetails;
 	
 	@Autowired
 	private UserDetails userDetails;
-	
-	
 	
 	static final Logger logger = Logger.getLogger(TestController.class);
 	
@@ -37,7 +36,7 @@ public class TestController {
 		BasicConfigurator.configure();
 		
 		if(session.getAttribute("username")!=null) {
-			return "success";
+			return "redirect:/home";
 		}
 		
 		logger.debug("Log4j connection successful!!");
@@ -57,13 +56,13 @@ public class TestController {
 		
 		List<User> user = userDetails.getUserDetails(userId);
 		
-		if(user!=null) {
+		if(!user.isEmpty()) {
 			
 			String fetched_password = user.get(0).getPassword();
 			
 			if(fetched_password.equalsIgnoreCase(password)) {
 				session.setAttribute("username", username);
-				return "success";
+				return "redirect:/home";
 			
 			} else {
 				modelMap.put("error", "Invalid Account");
@@ -81,24 +80,38 @@ public class TestController {
 	
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		session.removeAttribute("username");
+		session.setAttribute("username",null);
 		return "redirect:/test";
 	}
 	
-	@RequestMapping("/list")
-	public String getAccountDetails() {
+	
+	
+	@RequestMapping("/home")
+	public String getAccountDetails(Model model, HttpSession session) {
 		
-
+		
 		BasicConfigurator.configure();
 		
-		List<Account> list = details.getAccounts(1);
 		
-		for(Account temp:list) {
+		
+		if(session.getAttribute("username")==null) {
+			return "redirect:/test";
+		}
+		
+		String username = (String)session.getAttribute("username");
+		
+		List<Account> accountList = accountDetails.getAccounts(Long.parseLong(username));
+		
+		
+		for(Account temp:accountList) {
 			logger.debug(temp.toString());
 		}
 		
+		model.addAttribute("accountList", accountList);
 		
-		return "test";
+		return "success";
 	}
+	
+	
 	
 }

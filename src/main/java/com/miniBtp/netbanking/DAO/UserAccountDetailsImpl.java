@@ -27,7 +27,7 @@ public class UserAccountDetailsImpl implements UserAccountDetails {
 	
 	@Override
 	@Transactional
-	public List<Account> getAccounts(int userId) {
+	public List<Account> getAccounts(long userId) {
 		
 		BasicConfigurator.configure();
 		
