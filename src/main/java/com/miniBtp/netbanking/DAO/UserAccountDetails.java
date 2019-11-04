@@ -6,6 +6,6 @@ import com.miniBtp.netbanking.Entity.Account;
 
 public interface UserAccountDetails {
 
-	List<Account> getAccounts(int userId); 
+	List<Account> getAccounts(long userId); 
 	
 }
