@@ -18,6 +18,7 @@ import com.miniBtp.netbanking.DAO.UserAccountDetails;
 import com.miniBtp.netbanking.DAO.UserDetails;
 import com.miniBtp.netbanking.Entity.Account;
 import com.miniBtp.netbanking.Entity.User;
+import com.miniBtp.netbanking.Service.TransactionService;
 
 @Controller
 public class TestController {
@@ -27,6 +28,7 @@ public class TestController {
 	
 	@Autowired
 	private UserDetails userDetails;
+	
 	
 	static final Logger logger = Logger.getLogger(TestController.class);
 	
@@ -92,8 +94,6 @@ public class TestController {
 		
 		BasicConfigurator.configure();
 		
-		
-		
 		if(session.getAttribute("username")==null) {
 			return "redirect:/test";
 		}
@@ -111,6 +111,43 @@ public class TestController {
 		
 		return "success";
 	}
+	
+	
+	@RequestMapping("/transfer")
+	public String transfer(HttpSession session) {
+		
+		BasicConfigurator.configure();
+		if(session.getAttribute("username")==null) {
+			return "redirect:/test";
+		}
+		
+		return "transfer";
+		
+	}
+	
+	
+	@RequestMapping(value = "transaction", method = RequestMethod.POST)
+	public String transaction(@RequestParam("accountNoCred") String accountNoCred,
+								@RequestParam("amount") Long amountDebited,
+								@RequestParam("details") String details,
+								HttpSession session,
+								Model theModel) {
+		
+		BasicConfigurator.configure();
+		if(session.getAttribute("username")==null) {
+			return "redirect:/test";
+		}
+		
+		/*
+		 *
+		 * 
+		 * */
+		
+		
+		return"redirect:/home";
+		
+	}
+	
 	
 	
 	
