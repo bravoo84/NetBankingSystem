@@ -20,11 +20,16 @@
 					<th>Account type</th>
 					<th>Current balance</th>
 					<th>Currency</th>
+					<th>Transfer</th>
 				</tr>
 				
 				
 				<c:forEach var="accountList" items="${accountList}">
 				 
+				 <c:url var="transferLink" value="/transfer">
+				 	<c:param name="accountNo" value="${accountList.accountNo}">
+				 		</c:param>
+				 </c:url>
 				 	
 					<tr>
 						<td> ${accountList.accountNo} </td>
@@ -33,6 +38,10 @@
 						<td> ${accountList.balance} </td>
 						<td> ${accountList.currency} </td>
 						
+						<td>
+							<a href="${transferLink}">Proceed</a>
+						</td>
+						 
 						
 					</tr>
 					
