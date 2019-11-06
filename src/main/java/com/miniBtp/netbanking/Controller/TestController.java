@@ -1,6 +1,7 @@
 package com.miniBtp.netbanking.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -28,6 +29,14 @@ public class TestController {
 	
 	@Autowired
 	private UserDetails userDetails;
+	
+	@Autowired
+	private TransactionService transactionService;
+	
+	private String from = "";
+	
+	
+	
 	
 	
 	static final Logger logger = Logger.getLogger(TestController.class);
@@ -114,35 +123,37 @@ public class TestController {
 	
 	
 	@RequestMapping("/transfer")
-	public String transfer(HttpSession session) {
+	public String transfer(
+			@RequestParam("accountNo") String from,
+			Model theModel,
+			HttpSession session) {
 		
 		BasicConfigurator.configure();
 		if(session.getAttribute("username")==null) {
 			return "redirect:/test";
 		}
 		
-		return "transfer";
+		this.from = from;
 		
+		return "transfer";
 	}
 	
 	
 	@RequestMapping(value = "transaction", method = RequestMethod.POST)
-	public String transaction(@RequestParam("accountNoCred") String accountNoCred,
-								@RequestParam("amount") Long amountDebited,
+	public String transaction(@RequestParam("accountNoCred") String to,
+								@RequestParam("amount") String transferAmount,
 								@RequestParam("details") String details,
-								HttpSession session,
-								Model theModel) {
+								
+								HttpSession session) {
 		
 		BasicConfigurator.configure();
 		if(session.getAttribute("username")==null) {
 			return "redirect:/test";
 		}
 		
-		/*
-		 *
-		 * 
-		 * */
 		
+		logger.debug("Valueeeeee here: "+from);
+		transactionService.performTransaction(from, to, transferAmount, details);
 		
 		return"redirect:/home";
 		

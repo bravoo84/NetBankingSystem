@@ -1,13 +1,7 @@
 package com.miniBtp.netbanking.Service;
 
-public class TransactionService {
+public interface TransactionService {
 	
-	
-	
-
-	/*
-	 * Business Layer methods
-	 * */
-	
+	public int performTransaction(String from, String to, String amount, String details);
 	
 }
