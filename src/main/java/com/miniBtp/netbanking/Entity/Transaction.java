@@ -24,7 +24,7 @@ public class Transaction {
 	@Column(name = "details")
 	private String details;
 	
-	@Column(name = "cr/db")
+	@Column(name = "crdb")
 	private String CrDb;
 	
 	@Column(name = "amount")
