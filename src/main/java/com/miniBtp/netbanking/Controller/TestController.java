@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.miniBtp.netbanking.DAO.UserAccountDetails;
 import com.miniBtp.netbanking.DAO.UserDetails;
 import com.miniBtp.netbanking.Entity.Account;
+import com.miniBtp.netbanking.Entity.Transaction;
 import com.miniBtp.netbanking.Entity.User;
 import com.miniBtp.netbanking.Service.TransactionService;
 
@@ -133,7 +134,7 @@ public class TestController {
 			return "redirect:/test";
 		}
 		
-		this.from = from;
+		
 		
 		return "transfer";
 	}
@@ -158,6 +159,26 @@ public class TestController {
 		return"redirect:/home";
 		
 	}
+	
+	@RequestMapping(value = "miniStatement")
+	public String miniStatement(@RequestParam("accountNo") String accountNo,
+								HttpSession session,
+								Model theModel){
+		
+		BasicConfigurator.configure();
+		if(session.getAttribute("username")==null) {
+			return "redirect:/test";
+		}
+		
+		
+		List<Transaction> result = transactionService.generateMiniStatement(accountNo);
+		
+		theModel.addAttribute("transactionList", result);
+		theModel.addAttribute("accountNo", accountNo);
+		return "miniStatement";
+									
+	}
+								
 	
 	
 	

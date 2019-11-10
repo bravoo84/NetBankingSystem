@@ -25,7 +25,7 @@ public class Transaction {
 	private String details;
 	
 	@Column(name = "crdb")
-	private String CrDb;
+	private String crDb;
 	
 	@Column(name = "amount")
 	private long amount;
@@ -57,11 +57,11 @@ public class Transaction {
 	}
 
 	public String getCrDb() {
-		return CrDb;
+		return crDb;
 	}
 
 	public void setCrDb(String crDb) {
-		CrDb = crDb;
+		this.crDb = crDb;
 	}
 
 	public long getAmount() {
@@ -87,6 +87,15 @@ public class Transaction {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", accountNo=" + accountNo + ", details=" + details
+				+ ", CrDb=" + crDb + ", amount=" + amount + ", closingBalance=" + closingBalance + ", date=" + date
+				+ "]";
+	}
+	
+	
 	
 	
 	
