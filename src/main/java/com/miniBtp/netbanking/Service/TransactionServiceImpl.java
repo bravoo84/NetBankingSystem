@@ -3,12 +3,14 @@ package com.miniBtp.netbanking.Service;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.miniBtp.netbanking.DAO.AccountDAO;
 import com.miniBtp.netbanking.DAO.TransactionDAO;
+import com.miniBtp.netbanking.Entity.Transaction;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -60,6 +62,14 @@ public class TransactionServiceImpl implements TransactionService {
 		
 		
 		return 0;
+	}
+
+	@Override
+	public List<Transaction> generateMiniStatement(String accountNo) {
+		
+		return transactionDAO.getMiniStatement(accountNo);
+		
+		
 	}
 
 }
